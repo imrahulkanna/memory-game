@@ -1,0 +1,110 @@
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid yellow; */
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.banner {
+  width: 100%;
+  filter: drop-shadow(60px 0px 4px rgb(214, 203, 203));
+  margin-bottom: 50px;
+}
+
+.dropDown {
+  font-size: 20px;
+  color: white;
+  background-color: #0099d7;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.cardWrapper {
+  width: 59vw;
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px 64px;
+  justify-content: space-between;
+  /* border: 1px solid yellow; */
+}
+
+.profileCard {
+  /* border: 1px solid white; */
+  cursor: pointer;
+  position: relative;
+  height: 250px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url('./assets/op-bg1.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform-style:preserve-3d;
+  transform: perspective(1000px) rotateY(var(--rotate-y,0)) 
+    translateY(var(--translate-y,0));
+  transition: 150ms;
+  border-radius: 0.35em;
+  box-shadow: 0 0 120px 0px rgba(66, 204, 228, 0.568);
+}
+
+.profileCard:hover {
+  box-shadow: 0 0 10px 7px rgba(196, 244, 253, 0.568);
+}
+
+.profileCard.flip {
+  background-image: url('./assets/op-bg1.png');
+  --rotate-y: 180deg;
+}
+
+.profileImg {
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 30px;
+}
+
+.profileName {
+  width: 100%;
+  padding: 2px 0;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.front, .back {
+  /* border: 1px solid yellow; */
+  position: absolute;
+  display: none;
+}
+
+.front {
+  transform: rotateY(180deg);
+}
+
+.profileCard.flip .front{
+  display: block;
+}
+
+.playButton {
+  font-size: 16px;
+  padding: 5px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  background-color: rgb(13, 162, 13);
+  margin-bottom: 20px;
+}
+
+.reStart {
+  background-color: rgb(225, 117, 10);
+  margin-left: 50px;
+}
