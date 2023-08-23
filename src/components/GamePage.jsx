@@ -6,14 +6,18 @@ import "../App.css";
 function Home() {
   const location = useLocation();
   let size;
-  if (location.state && location.state.size) {
-    size = location.state.size;
-  } else {
-    size = localStorage.getItem("size");
-  }
+
+  useEffect(()=>{
+    if (location.state && location.state.size) {
+      size = location.state.size;
+    } else {
+      size = localStorage.getItem("size");
+    }
+    console.log('game',size)
+  },[]);
+
   const [myArr, setMyArr] = useState([]);
 
-  
   function createShuffledArray() {
     let mySet = new Set();
     while (mySet.size < size) {
@@ -45,15 +49,21 @@ function Home() {
   }, []);
 
   console.log(myArr);
+
+  useEffect(()=> {
+    const reLoad = () => {
+      window.location.reload();
+    }
+    document.querySelector(".playButton").addEventListener('click',reLoad);
+
+    return () => {
+      document.querySelector(".playButton").removeEventListener("click", reLoad);
+    }
+  },[])
   return (
     <>
       <div>
-        <button
-          onClick={() => {
-            window.location.reload();
-          }}
-          className="playButton"
-        >
+        <button className="playButton">
           Re Start
         </button>
         <Link to="/">

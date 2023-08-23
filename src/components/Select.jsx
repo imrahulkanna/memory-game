@@ -4,12 +4,15 @@ import "../App.css";
 
 function Select() {
   const [value, setValue] = useState(6);
-  localStorage.setItem("size", value);
+  // localStorage.setItem("size", value);
+
+  useEffect(() => {
+    localStorage.setItem('size',value);
+    console.log(value);
+  }, [value])
 
   function handleClick(e) {
     setValue(e.target.value);
-    localStorage.setItem('size',e.target.value);
-    console.log(e.target.value);
   }
   return (
     <>
