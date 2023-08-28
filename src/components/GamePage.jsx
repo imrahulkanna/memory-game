@@ -5,16 +5,18 @@ import "../App.css";
 
 function Home() {
   const location = useLocation();
-  let size;
+  const [size, setSize] = useState(
+    () => location.state.size || localStorage.getItem("size")
+  );
 
-  useEffect(()=>{
-    if (location.state && location.state.size) {
-      size = location.state.size;
-    } else {
-      size = localStorage.getItem("size");
-    }
-    console.log('game',size)
-  },[]);
+  // useEffect(()=>{
+  //   if (location.state && location.state.size) {
+  //     size = location.state.size;
+  //   } else {
+  //     size = localStorage.getItem("size");
+  //   }
+  //   console.log('game',size)
+  // },[]);
 
   const [myArr, setMyArr] = useState([]);
 
